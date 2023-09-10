@@ -4,6 +4,8 @@
 
 #include "lexer.h"
 
+#include <stdio.h>
+
 struct SLexer {
   const char *input;
   size_t inputLength;
@@ -179,11 +181,52 @@ static const char *_lexerReadInst(Lexer *lexer, size_t *len) {
   return lexer->input + position;
 }
 
-static const char *_lexerReadInt(Lexer *lexer, size_t *len) {}
+static const char *_lexerReadInt(Lexer *lexer, size_t *len) {
+  char *result = NULL;
+  size_t position = lexer->position;
 
-static const char *_lexerReadHex(Lexer *lexer, size_t *len) {}
+  while (_isNumber(lexer->ch)) {
+    _lexerReadChar(lexer);
+  }
 
-static const char *_lexerReadBin(Lexer *lexer, size_t *len) {}
+  if (len) {
+    *len = lexer->position - position;
+  }
+
+  return lexer->input + position;
+}
+
+static const char *_lexerReadHex(Lexer *lexer, size_t *len) {
+  char *result = NULL;
+  size_t position = lexer->position;
+
+  while (_isNumber(lexer->ch) ||
+         (lexer->position - position == 1 && lexer->ch == 'x')) {
+    _lexerReadChar(lexer);
+  }
+
+  if (len) {
+    *len = lexer->position - position;
+  }
+
+  return lexer->input + position;
+}
+
+static const char *_lexerReadBin(Lexer *lexer, size_t *len) {
+  char *result = NULL;
+  size_t position = lexer->position;
+
+  while (_isNumber(lexer->ch) ||
+         (lexer->position - position == 1 && lexer->ch == 'b')) {
+    _lexerReadChar(lexer);
+  }
+
+  if (len) {
+    *len = lexer->position - position;
+  }
+
+  return lexer->input + position;
+}
 
 static uint8_t _isLetter(char ch) {
   return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_';

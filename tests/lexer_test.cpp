@@ -2,12 +2,12 @@
 #include <gtest/gtest.h>
 
 TEST(TestLexer, TestLexer_Complete) {
-  const char *input = "lda 0x01"
-                      "adb 0b00000010"
-                      "add"
-                      "nop"
-                      "sta 3"
-                      "hlt";
+  const char *input = "lda 0x01\n"
+                      "ldb 0b00000010\n"
+                      "add\n"
+                      "nop\n"
+                      "sta 3\n"
+                      "hlt\n";
   Lexer *lexer = NULL;
   Token *tests[9];
   int testLength = 9;
