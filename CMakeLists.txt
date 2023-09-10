@@ -9,11 +9,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(Headers
   src/lexer/lexer.h
   src/ast/ast.h
+  src/parser/parser.h
 )
 
 set(Sources
   src/lexer/lexer.c
   src/ast/ast.c
+  src/parser/parser.c
 )
 
 enable_testing()
