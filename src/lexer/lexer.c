@@ -4,8 +4,6 @@
 
 #include "lexer.h"
 
-#include <stdio.h>
-
 struct SLexer {
   const char *input;
   size_t inputLength;

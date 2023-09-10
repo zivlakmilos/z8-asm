@@ -37,8 +37,8 @@ typedef struct SToken {
 } Token;
 
 typedef struct SLexer Lexer;
-Lexer *lexerCreate(const char *input);
 
+Lexer *lexerCreate(const char *input);
 Token *lexerNext(Lexer *lexer);
 void lexerCleanup(Lexer **lexer);
 
