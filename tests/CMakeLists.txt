@@ -9,7 +9,7 @@ FetchContent_MakeAvailable(googletest)
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
-add_executable(z8asm_test lexer_test.cpp ast_test.cpp parser_test.cpp)
+add_executable(z8asm_test lexer_test.cpp ast_test.cpp parser_test.cpp compiler_test.cpp)
 
 target_link_libraries(z8asm_test
  PRIVATE

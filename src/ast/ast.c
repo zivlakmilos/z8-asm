@@ -15,6 +15,8 @@ typedef struct SStatement {
 struct SAst {
   Statement *head;
   Statement *tail;
+
+  size_t len;
 };
 
 struct SStatementIter {
@@ -45,9 +47,10 @@ void astAddStatement(Ast *ast, Token *instruction, Token *arg) {
 
   statement->instruction = instruction;
   statement->arg = arg;
-
   statement->prev = NULL;
   statement->next = NULL;
+
+  ast->len++;
 
   if (!ast->head) {
     ast->head = statement;
@@ -72,6 +75,8 @@ StatementIter *astCreateStatementIter(Ast *ast) {
 
   return iter;
 }
+
+size_t astGetLength(Ast *ast) { return ast->len; }
 
 void astCleanup(Ast **ast) {
   if (!ast) {

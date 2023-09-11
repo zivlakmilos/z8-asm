@@ -17,6 +17,7 @@ typedef struct SStatementIter StatementIter;
 Ast *astCreate(void);
 void astAddStatement(Ast *ast, Token *instruction, Token *arg);
 StatementIter *astCreateStatementIter(Ast *ast);
+size_t astGetLength(Ast *ast);
 void astCleanup(Ast **ast);
 
 uint8_t statementIterNext(StatementIter *iter);
