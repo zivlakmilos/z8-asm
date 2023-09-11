@@ -18,6 +18,7 @@ typedef enum {
   TokenTypeStB,
   TokenTypeSetA,
   TokenTypeSetB,
+  TokenTypeNot,
   TokenTypeAnd,
   TokenTypeOr,
   TokenTypeXor,

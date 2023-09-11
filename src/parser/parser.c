@@ -142,6 +142,7 @@ uint8_t _isInstruction(Token *token) {
   case TokenTypeStB:
   case TokenTypeSetA:
   case TokenTypeSetB:
+  case TokenTypeNot:
   case TokenTypeAnd:
   case TokenTypeOr:
   case TokenTypeXor:

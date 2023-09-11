@@ -247,6 +247,8 @@ static TokenType _getTokenTypeFromLiteral(const char *literal, size_t len) {
     return TokenTypeSetA;
   } else if (strncmp(literal, "setb", len) == 0) {
     return TokenTypeSetB;
+  } else if (strncmp(literal, "not", len) == 0) {
+    return TokenTypeNot;
   } else if (strncmp(literal, "and", len) == 0) {
     return TokenTypeAnd;
   } else if (strncmp(literal, "or", len) == 0) {
