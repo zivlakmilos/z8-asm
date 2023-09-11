@@ -14,8 +14,6 @@ typedef struct SAst Ast;
 
 typedef struct SStatementIter StatementIter;
 
-typedef void (*forEachCallback)(Token *instruction, Token *arg);
-
 Ast *astCreate(void);
 void astAddStatement(Ast *ast, Token *instruction, Token *arg);
 StatementIter *astCreateStatementIter(Ast *ast);
