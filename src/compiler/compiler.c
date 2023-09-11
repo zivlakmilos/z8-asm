@@ -89,7 +89,6 @@ void compilerCleanup(Compiler **parser) {
                               PRIVATE FUNCTIONS                               *
 *******************************************************************************/
 
-#include <stdio.h>
 uint16_t _compileInstruction(Token *instruction, Token *arg) {
   uint16_t inst = _instructionTable[instruction->type];
 
