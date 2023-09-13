@@ -14,7 +14,7 @@ typedef struct SParser Parser;
 
 Parser *parserCreate(Lexer *lexer);
 Ast *parseProgram(Parser *parser);
-const char *getError(Parser *parser);
+const char *parserGetError(Parser *parser);
 void parserCleanup(Parser **parser);
 
 #ifdef __cplusplus

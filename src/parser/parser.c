@@ -77,7 +77,7 @@ Ast *parseProgram(Parser *parser) {
   return ast;
 }
 
-const char *getError(Parser *parser) {
+const char *parserGetError(Parser *parser) {
   if (!parser->hasError) {
     return NULL;
   }

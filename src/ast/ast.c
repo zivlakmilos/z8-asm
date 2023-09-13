@@ -161,7 +161,7 @@ void _statementCleanup(Statement **statement) {
   }
 
   tokenCleanup(&(*statement)->instruction);
-  tokenCleanup(&(*statement)->instruction);
+  tokenCleanup(&(*statement)->arg);
 
   free(*statement);
   *statement = NULL;

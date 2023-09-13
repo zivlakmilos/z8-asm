@@ -11,6 +11,7 @@ set(Headers
   src/ast/ast.h
   src/parser/parser.h
   src/compiler/compiler.h
+  src/cli/cli.h
 )
 
 set(Sources
@@ -18,6 +19,7 @@ set(Sources
   src/ast/ast.c
   src/parser/parser.c
   src/compiler/compiler.c
+  src/cli/cli.c
 )
 
 enable_testing()
