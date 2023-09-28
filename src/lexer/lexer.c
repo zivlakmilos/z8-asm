@@ -22,6 +22,8 @@ static const char *_lexerReadBin(Lexer *lexer, size_t *len);
 
 static uint8_t _isLetter(char ch);
 static uint8_t _isNumber(char ch);
+static uint8_t _isBin(char ch);
+static uint8_t _isHex(char ch);
 
 static TokenType _getTokenTypeFromLiteral(const char *literal, size_t len);
 
@@ -198,7 +200,7 @@ static const char *_lexerReadHex(Lexer *lexer, size_t *len) {
   char *result = NULL;
   size_t position = lexer->position;
 
-  while (_isNumber(lexer->ch) ||
+  while (_isHex(lexer->ch) ||
          (lexer->position - position == 1 && lexer->ch == 'x')) {
     _lexerReadChar(lexer);
   }
@@ -214,7 +216,7 @@ static const char *_lexerReadBin(Lexer *lexer, size_t *len) {
   char *result = NULL;
   size_t position = lexer->position;
 
-  while (_isNumber(lexer->ch) ||
+  while (_isBin(lexer->ch) ||
          (lexer->position - position == 1 && lexer->ch == 'b')) {
     _lexerReadChar(lexer);
   }
@@ -231,6 +233,13 @@ static uint8_t _isLetter(char ch) {
 }
 
 static uint8_t _isNumber(char ch) { return '0' <= ch && '9' >= ch; }
+
+static uint8_t _isBin(char ch) { return ch == '0' || ch == '1'; }
+
+static uint8_t _isHex(char ch) {
+  return '0' <= ch && ch <= '9' || 'a' <= ch && ch <= 'f' ||
+         'A' <= ch && ch <= 'F';
+}
 
 static TokenType _getTokenTypeFromLiteral(const char *literal, size_t len) {
   if (strncmp(literal, "nop", len) == 0) {
